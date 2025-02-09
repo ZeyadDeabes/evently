@@ -12,7 +12,8 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/images/evently_logo.png', height: 200), // Replace with actual logo
+                Image.asset('assets/images/evently_logo.png',
+                    height: 200), // Replace with actual logo
                 const SizedBox(height: 10),
                 const SizedBox(height: 20),
                 _buildTextField(Icons.email, "Email"),
@@ -24,7 +25,12 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {},
                     child: const Text(
                       "Forget Password?",
-                      style: TextStyle(color: Colors.blue, fontSize: 14),
+                      style: TextStyle(
+                          color: Color(0XFF5669FF),
+                          fontSize: 14,
+                          decoration: TextDecoration.underline,
+                          decorationThickness: 1.5,
+                      ),
                     ),
                   ),
                 ),
@@ -33,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
+                      backgroundColor: const Color(0XFF5669FF),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -57,7 +63,10 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () {},
                       child: const Text(
                         "Create Account",
-                        style: TextStyle(color: Colors.blue),
+                        style: TextStyle(
+                            color: Color(0XFF5669FF),
+                            decoration: TextDecoration.underline,
+                            decorationThickness: 1.5),
                       ),
                     ),
                   ],
@@ -65,18 +74,19 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 10),
                 const Row(
                   children: [
-                    Expanded(child: Divider()),
+                    Expanded(child: Divider(color: Color(0XFF5669FF))),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text("Or"),
                     ),
-                    Expanded(child: Divider()),
+                    Expanded(child: Divider(color: Color(0XFF5669FF))),
                   ],
                 ),
                 const SizedBox(height: 10),
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 14, horizontal: 20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -85,7 +95,8 @@ class LoginScreen extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset('assets/images/google_icon.png', height: 24), // Replace with actual Google logo
+                      Image.asset('assets/images/google_icon.png',
+                          height: 24), // Replace with actual Google logo
                       const SizedBox(width: 10),
                       const Text("Login With Google"),
                     ],
@@ -95,7 +106,8 @@ class LoginScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset('assets/images/america_flag.png', height: 24), // Replace with actual flag images
+                    Image.asset('assets/images/america_flag.png',
+                        height: 24), // Replace with actual flag images
                     const SizedBox(width: 10),
                     Image.asset('assets/images/egypt_flag.png', height: 24),
                   ],
@@ -108,7 +120,8 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField(IconData icon, String hintText, {bool isPassword = false}) {
+  Widget _buildTextField(IconData icon, String hintText,
+      {bool isPassword = false}) {
     return TextField(
       obscureText: isPassword,
       decoration: InputDecoration(
@@ -119,9 +132,9 @@ class LoginScreen extends StatelessWidget {
         ),
         suffixIcon: isPassword
             ? IconButton(
-          icon: const Icon(Icons.visibility_off, color: Colors.grey),
-          onPressed: () {},
-        )
+                icon: const Icon(Icons.visibility_off, color: Colors.grey),
+                onPressed: () {},
+              )
             : null,
       ),
     );
