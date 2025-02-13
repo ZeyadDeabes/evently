@@ -1,10 +1,15 @@
+import 'package:evently/core/extensions/extensions.dart';
+import 'package:evently/core/routes/pages_route_name.dart';
+import 'package:evently/core/theme/color_palette.dart';
+import 'package:evently/core/widgets/custom_text_field.dart';
+import 'package:evently/main.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[50],
+      backgroundColor: ColorPalette.white, // Light background color
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Center(
@@ -15,21 +20,34 @@ class LoginScreen extends StatelessWidget {
                 Image.asset('assets/images/evently_logo.png',
                     height: 200), // Replace with actual logo
                 const SizedBox(height: 10),
-                const SizedBox(height: 20),
-                _buildTextField(Icons.email, "Email"),
+                const CustomTextField(
+                  backgroundColor: Colors.transparent,
+                  hint: "Email",
+                  hintColor: ColorPalette.generalGreyColor,
+                  prefixIcon: Icon(Icons.email,color: ColorPalette.generalGreyColor,),
+                ).setOnlyPadding(context, 0.03, 0.01, 0.0, 0.0),
+                const CustomTextField(
+                  backgroundColor: Colors.transparent,
+                  isPassword: true,
+                  maxLines: 1,
+                  hint: "Password",
+                  hintColor: ColorPalette.generalGreyColor,
+                  prefixIcon: Icon(Icons.lock,color: ColorPalette.generalGreyColor,),
+                ).setOnlyPadding(context, 0.01, 0.03, 0.0, 0.0),
                 const SizedBox(height: 10),
-                _buildTextField(Icons.lock, "Password", isPassword: true),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      navigatorKey.currentState!.pushNamed(PagesRouteName.forgetPassword);
+                    },
                     child: const Text(
                       "Forget Password?",
                       style: TextStyle(
-                          color: Color(0XFF5669FF),
-                          fontSize: 14,
-                          decoration: TextDecoration.underline,
-                          decorationThickness: 1.5,
+                        color: Color(0XFF5669FF),
+                        fontSize: 14,
+                        decoration: TextDecoration.underline,
+                        decorationThickness: 1.5,
                       ),
                     ),
                   ),
@@ -60,7 +78,9 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     const Text("Don't Have an Account?"),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        navigatorKey.currentState!.pushNamed(PagesRouteName.signUp);
+                      },
                       child: const Text(
                         "Create Account",
                         style: TextStyle(

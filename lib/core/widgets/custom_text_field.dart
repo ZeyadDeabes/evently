@@ -22,6 +22,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputAction? action;
   final FocusNode? focusNode;
   final Color? hintColor;
+  final Color? backgroundColor;
   final TextDirection? textDirection;
   final EdgeInsets? edgeInsets;
 
@@ -59,6 +60,7 @@ class CustomTextField extends StatefulWidget {
       bottom: 14,
     ),
     this.hintColor = Colors.white,
+    this.backgroundColor = Colors.white,
   });
 
   @override
@@ -109,21 +111,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
         prefixIconConstraints: const BoxConstraints(minWidth: 56),
         suffixIcon: widget.isPassword ?? false
             ? InkWell(
-                onTap: () {
-                  setState(() {
-                    obscureText = !obscureText;
-                  });
-                },
-                child: Icon(
-                  obscureText
-                      ? Icons.visibility_outlined
-                      : Icons.visibility_off_outlined,
-                  color: Colors.grey,
-                ),
-              )
+          onTap: () {
+            setState(() {
+              obscureText = !obscureText;
+            });
+          },
+          child: Icon(
+            obscureText
+                ? Icons.visibility_outlined
+                : Icons.visibility_off_outlined,
+            color: Colors.grey,
+          ),
+        )
             : widget.suffixWidget,
         prefixIcon: widget.prefixIcon,
-
         hintText: widget.hint,
         hintStyle: TextStyle(
           fontFamily: "Inter",
@@ -132,7 +133,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           fontWeight: FontWeight.w500,
         ),
         counterText: "",
-        fillColor: Colors.white,
+        fillColor: widget.backgroundColor,
         filled: true,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
@@ -141,7 +142,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
             width: 1,
           ),
         ),
-        // suffix: isPass widget.suffixWidget,
         contentPadding: widget.edgeInsets,
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
@@ -164,7 +164,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
             width: 1,
           ),
         ),
-
         errorStyle: const TextStyle(
           color: Color(0xFFCC0000),
           fontSize: 12,
